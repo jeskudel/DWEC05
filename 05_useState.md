@@ -198,4 +198,21 @@ React pone sus funciones de actualización en una cola. Entonces, durante el sig
 No hay otras actualizaciones en cola, por lo que React almacenará 45 como el estado actual al final.
 
 ### Estados con array
+
+Los arrays son **mutables** en JavaScript, pero deberían tratarse como inmutables cuando los almacenas en el estado. Al igual que los objetos, cuando quieras actualizar un `array` almacenado en el estado, necesitas crear uno nuevo (o hacer una copia de uno existente) y luego asignar el estado para que utilice este nuevo `array`.
+
+Esto significa que no deberías reasignar elementos dentro de un array como `arr[0] = 'pájaro'`, y tampoco deberías usar métodos que puedan mutar el array, como `push()` y `pop()`.
+
+> Teneis mas ejemplos detallados en la documentación de React en el siguiente [enlace.](https://es.react.dev/learn/updating-arrays-in-state#adding-to-an-array)
+
 ### Estados con objetos
+
+El estado puede contener cualquier tipo de valor JavaScript, incluyendo objetos. Pero no deberías cambiar los objetos que tienes en el estado de React directamente. En su lugar, cuando quieras actualizar un objeto, tienes que crear uno nuevo (o hacer una copia de uno existente), y luego configurar el estado para usar esa copia.
+
+```js
+const [position, setPosition] = useState({ x: 0, y: 0 });
+...
+position.x = 5;   // No debemos mutar un objeto.
+```
+
+> Teneis mas ejemplos detallados en la documentación de React en el siguiente [enlace.](https://es.react.dev/learn/updating-objects-in-state#treat-state-as-read-only)
